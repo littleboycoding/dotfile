@@ -1,0 +1,5 @@
+#Minpac package manager
+config/nvim/pack/minpac/opt/*
+config/nvim/pack/minpac/start
+#config/nvim/pack/minpac/start
+!config/nvim/pack/minpac/opt/minpac/
