@@ -4,8 +4,7 @@ if !exists('g:loaded_minpac')
 	echo 'minpac is not installed'
 else
 	call minpac#init()
-	call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#utils#install()', 'type': 'opt' })
-	packadd markdown-preview.nvim
+	call minpac#add('iamcco/markdown-preview.nvim', {'do': '!cd app && npm install'})
 
 	call minpac#add('preservim/nerdcommenter', { 'type': 'opt' })
 	call minpac#add('itchyny/lightline.vim', { 'type': 'opt' })
