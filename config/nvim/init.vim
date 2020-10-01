@@ -1,12 +1,12 @@
-set rtp+=~/.fzf
-nnoremap <F3> :FZF<CR>
-
 packadd minpac
 
 if !exists('g:loaded_minpac')
 	echo 'minpac is not installed'
 else
 	call minpac#init()
+	call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#utils#install()', 'type': 'opt' })
+	packadd markdown-preview.nvim
+
 	call minpac#add('preservim/nerdcommenter', { 'type': 'opt' })
 	call minpac#add('itchyny/lightline.vim', { 'type': 'opt' })
 
@@ -34,9 +34,13 @@ else
 	\ }
 endif
 
+set rtp+=~/.fzf
+nnoremap <F3> :FZF<CR>
+
 set termguicolors
 
 set number
+set relativenumber
 set cursorline
 
 packadd! dracula

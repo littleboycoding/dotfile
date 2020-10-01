@@ -1,3 +1,5 @@
+#/bin/bash
+
 source "$HOME/.user_config/alias.bash"
 PATH="$HOME/.user_config/bin:$PATH"
 
