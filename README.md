@@ -10,5 +10,5 @@ This script has written and tested on Ubuntu 20.04
 ```bash
 git clone https://github.com/littleboycoding/dotfile.git ~/Dotfile && \
 cd ~/Dotfile && \
-./installer-script.bash
+./installer-script.sh
 ```
