@@ -4,7 +4,7 @@ echo 'Installing my dotfile'
 
 echo 'Installing neovim !'
 
-sudo apt install -y neovim && echo Select default text editor && select-editor
+sudo apt install -y neovim bat && echo Select default text editor && select-editor
 
  #_     _       _    _             
 #| |   (_)_ __ | | _(_)_ __   __ _ 

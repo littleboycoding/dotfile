@@ -4,6 +4,14 @@ if !exists('g:loaded_minpac')
 	echo 'minpac is not installed'
 else
 	call minpac#init()
+	call minpac#add('junegunn/fzf.vim')
+	nnoremap <F3> :Files<CR>
+	nnoremap <C-b> :Buffers<CR>
+
+	call minpac#add('caenrique/nvim-toggle-terminal')
+	nnoremap <silent> <C-j> :ToggleTerminal<Enter>
+	tnoremap <silent> <C-j> <C-\><C-n>:ToggleTerminal<Enter>
+
 	call minpac#add('iamcco/markdown-preview.nvim', {'do': '!cd app && npm install'})
 
 	call minpac#add('preservim/nerdcommenter', { 'type': 'opt' })
@@ -34,7 +42,6 @@ else
 endif
 
 set rtp+=~/.fzf
-nnoremap <F3> :FZF<CR>
 
 set termguicolors
 
@@ -47,3 +54,4 @@ syntax enable
 colorscheme dracula
 
 filetype plugin on
+
