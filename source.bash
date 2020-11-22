@@ -1,7 +1,8 @@
 #/bin/bash
 
 source "$HOME/Dotfile/alias.bash"
-PATH="$HOME/Dotfile/bin:$PATH"
+PATH="$HOME/Dotfile/bin:$HOME/.local/bin:$PATH"
+#(cat ~/.cache/wal/sequences &)
 
 export XDG_CONFIG_HOME="$HOME/.config/"
 export VISUAL=nvim
@@ -55,3 +56,5 @@ function parse_git_dirty {
 }
 
 export PS1="\[\e[32m\]\u\[\e[m\] \w \[\e[34m\]\`parse_git_branch\`\[\e[m\]\[\e[33m\]\\$\[\e[m\] "
+
+xset r rate 220 40

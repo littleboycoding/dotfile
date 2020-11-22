@@ -1,0 +1,92 @@
+let mapleader = ","
+packadd minpac
+
+if !exists('g:loaded_minpac')
+echo 'minpac is not installed'
+else
+	command! MinpacUpdate call minpac#update()
+	command! MinpacClean call minpac#clean()
+
+	call minpac#init()
+
+	call minpac#add('TaDaa/vimade', { 'type': 'opt' })
+	call minpac#add('sheerun/vim-polyglot')
+	call minpac#add('junegunn/goyo.vim')
+	call minpac#add('tpope/vim-fugitive')
+	call minpac#add('airblade/vim-gitgutter')
+	call minpac#add('Yggdroot/indentLine')
+	call minpac#add('mattn/emmet-vim')
+	call minpac#add('neomake/neomake')
+	call minpac#add('sbdchd/neoformat')
+	call minpac#add('tpope/vim-vinegar')
+
+	packadd neoformat
+	autocmd BufWritePre * Neoformat
+
+	packadd neomake
+	call neomake#configure#automake('nrwi', 500)
+
+	call minpac#add('morhetz/gruvbox')
+	call minpac#add('dracula/vim', { 'name' : 'dracula' })
+
+	set termguicolors
+	set background=dark
+	packadd! dracula
+	let g:gruvbox_contrast_light = 'hard'
+	let g:gruvbox_contrast_dark = 'hard'
+	colorscheme dracula
+
+	call minpac#add('nvim-lua/completion-nvim', { 'type': 'opt' })
+	call minpac#add('neovim/nvim-lspconfig', { 'type': 'opt' })
+	packadd nvim-lspconfig
+	packadd completion-nvim
+
+	lua require'nvim_lsp'.tsserver.setup{on_attach=require'completion'.on_attach}
+	lua require'nvim_lsp'.intelephense.setup{on_attach=require'completion'.on_attach}
+	lua require'nvim_lsp'.rust_analyzer.setup{on_attach=require'completion'.on_attach}
+	lua require'nvim_lsp'.html.setup{on_attach=require'completion'.on_attach}
+	lua require'nvim_lsp'.cssls.setup{on_attach=require'completion'.on_attach}
+
+	autocmd Filetype javascript setlocal omnifunc=v:lua.vim.lsp.omnifunc
+	autocmd Filetype javascriptreact setlocal omnifunc=v:lua.vim.lsp.omnifunc
+	autocmd Filetype typescript setlocal omnifunc=v:lua.vim.lsp.omnifunc
+	autocmd Filetype typescriptreact setlocal omnifunc=v:lua.vim.lsp.omnifunc
+	autocmd Filetype rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
+	autocmd Filetype php setlocal omnifunc=v:lua.vim.lsp.omnifunc
+	autocmd Filetype html setlocal omnifunc=v:lua.vim.lsp.omnifunc
+	autocmd Filetype css setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
+	call minpac#add('junegunn/fzf.vim')
+	nnoremap <F3> :Files<CR>
+	nnoremap <F4> :Buffers<CR>
+
+	tnoremap <silent> <ESC> <C-\><C-n>
+	autocmd TermOpen * setlocal nonumber norelativenumber
+
+	call minpac#add('iamcco/markdown-preview.nvim', {'do': '!cd app && npm install'})
+
+	call minpac#add('preservim/nerdcommenter', { 'type': 'opt' })
+	packadd nerdcommenter
+
+	call minpac#add('itchyny/lightline.vim', { 'type': 'opt' })
+	packadd lightline.vim
+	let g:lightline = { 'colorscheme': 'dracula' }
+endif
+
+set rtp+=~/.fzf
+
+set number
+set relativenumber
+set cursorline
+set hidden
+
+syntax enable
+
+filetype plugin on
+
+set list lcs=tab:\|\ 
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+set completeopt=menuone,noinsert,noselect
